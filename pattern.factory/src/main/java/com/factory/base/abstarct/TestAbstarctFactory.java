@@ -12,6 +12,8 @@ public class TestAbstarctFactory {
     public static void main(String[] args) {
         DefaultCarFactory defaultCarFactory = new DefaultCarFactory();
         Car car = defaultCarFactory.getBiaozhiCar();
+        Car bieke = defaultCarFactory.getBiekeCar();
         car.myName();
+        bieke.myName();
     }
 }

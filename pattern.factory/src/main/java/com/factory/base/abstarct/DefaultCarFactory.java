@@ -5,6 +5,7 @@ import com.factory.base.Car;
 import com.factory.base.KaluolaCar;
 import com.factory.base.func.CarFunctionFactory;
 import com.factory.base.func.DaZhongCarFactory;
+import com.factory.base.simple.BiekeCar;
 
 /**
  * @Author: chao.zhu
@@ -27,5 +28,14 @@ public class DefaultCarFactory extends AbstarctCarFactory {
     @Override
     public Car getKaluolaCar() {
         return new KaluolaCar();
+    }
+
+    /**
+     * 在这个里面生成别克汽车
+     * @return
+     */
+    @Override
+    public Car getBiekeCar() {
+        return new BiekeCar();
     }
 }
