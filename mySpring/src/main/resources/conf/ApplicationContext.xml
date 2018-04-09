@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--引入schema约束  -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd">  
+    
+    <!--开启注解扫描   到package包中扫描类，方法，属性上面是否有注解-->
+	<context:component-scan base-package="com.spring"></context:component-scan>    
+     <!-- 只扫描属性上的注解 -->
+    <!--  <context:annotation-config></context:annotation-config> -->
+    <!-- 配置对象 （ioc）-->
+    <!-- 
+    id:起名称
+    class:创建对象所在类的全路径
+    name:和id相似，起名称，id不能有特殊符号，但是name可以使用特殊符号
+    scope: singleton 默认 单例
+    	   prototype 多例
+     -->
+    <bean id="user" class="com.spring.ioc.bean.User" scope="singleton">
+    <!-- 有参构造注入 -->
+    	<!-- <constructor-arg name="name" value="Lucy"></constructor-arg> -->
+    <!-- 用set方法注入 -->
+    	<property name="name" value="Lily"></property>
+    </bean> 
+    <bean id="userService" class="com.spring.ioc.factory.UserService">
+    	<property name="user" ref="user"></property>
+    </bean>
+    <!-- 使用静态工厂创建对象 -->
+   <!--  <bean id="user" class="com.spring.ioc.factory.UserStaticFactory" factory-method="getUser"></bean> -->
+    
+    <!-- 使用工厂创建对象 -->
+    <!-- <bean id="factory" class="com.spring.ioc.factory.UserFactory"></bean>
+    <bean id="user" factory-bean="factory" factory-method="getUser"></bean> -->
+    
+</beans>  

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+         xmlns:aop="http://www.springframework.org/schema/aop"    
+         xmlns:context="http://www.springframework.org/schema/context"    
+         xsi:schemaLocation="http://www.springframework.org/schema/beans   
+                             http://www.springframework.org/schema/beans/spring-beans.xsd    
+                              http://www.springframework.org/schema/aop   
+                             http://www.springframework.org/schema/aop/spring-aop.xsd    
+                             http://www.springframework.org/schema/context   
+                             http://www.springframework.org/schema/context/spring-context.xsd">
+
+  
+  <!--aop aspectJ  配置对象-->
+  <bean id = "book" class="com.fp.spring.aop.bean.Book"></bean>
+  <bean id = "myBook" class="com.fp.spring.aop.bean.MyBook"></bean>
+  <!-- 配置aop操作 -->
+  <aop:config>
+  	<!-- 配置切入点  --><!-- com.spring.aop.bean.Book -->
+     <aop:pointcut expression="execution(* com.fp.spring.aop.bean.*.*(..))" id="pointBook"/>
+   <!--   配置切面  把增强用在方法上 -->
+     <aop:aspect ref="myBook">
+     	<aop:before method="addMyBook" pointcut-ref="pointBook"/>
+     </aop:aspect>
+  </aop:config>
+                             
+</beans>
